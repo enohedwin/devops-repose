@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/python:3.8  # Specifies the Docker image to use as the executor
+    steps:
+      - checkout  # Checks out the source code
+      - run: pip install -r requirements.txt  # Installs dependencies
+      - run: pytest  # Runs tests
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build-and-test
+     
